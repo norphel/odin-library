@@ -7,17 +7,17 @@
     <title>Odin Library</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./normalize.css">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <header>
         <h1>My Library</h1>
+        <button type="button" class="open-modal">Add a New Book</button>
     </header>
     <main>
         <div class="books-container">
-            <button>Add New Book &plus;</button>
-            <form action="./index.html" id="add-book">
-                <p>Add a New Book <span class="close-modal">&times;</span></p>
+            <form action="./index.html" id="add-book-details">
+                <p>Add a New Book <button type="button" class="close-modal">&times;</button></p>
                 <label for="title">Title <span>*</span>
                     <input type="text" id="title" name="title" required>
                 </label><br>
