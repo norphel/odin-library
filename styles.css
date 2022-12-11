@@ -35,6 +35,7 @@ main {
 form {
     display: none;
     background-color: #0f172a;
+    margin: 0 auto;
     padding: 2rem;
     max-width: 320px;
     font-size: 1.2rem;
