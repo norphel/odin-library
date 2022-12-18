@@ -85,30 +85,30 @@ function displayAllBooks() {
         read_status.className = 'book-details';
         let read_status_p1 = document.createElement('p');
         read_status_p1.textContent = 'Read Status';
-        let read_status_p2 = document.createElement('p');
-
+        let read_status_div = document.createElement('div');
+        
         if (myLibrary[i].read === true) {
             
-            let p2_btn = document.createElement('button');
-            p2_btn.setAttribute('type', 'button');
-            p2_btn.className = 'read';
-            p2_btn.textContent = 'Read';
-            p2_btn.onclick = toggleReadStatus;
+            let read_status_btn = document.createElement('button');
+            read_status_btn.setAttribute('type', 'button');
+            read_status_btn.className = 'read-status read';
+            read_status_btn.textContent = 'Read';
+            read_status_btn.onclick = toggleReadStatus;
 
-            read_status_p2.appendChild(p2_btn);
+            read_status_div.appendChild(read_status_btn);
             read_status.appendChild(read_status_p1);
-            read_status.appendChild(read_status_p2);
+            read_status.appendChild(read_status_div);
             card.appendChild(read_status);
         } else {
-            let p2_btn = document.createElement('button');
-            p2_btn.setAttribute('type', 'button');
-            p2_btn.className = 'not-read';
-            p2_btn.textContent = 'Not-Read';
-            p2_btn.onclick = toggleReadStatus;
+            let read_status_btn = document.createElement('button');
+            read_status_btn.setAttribute('type', 'button');
+            read_status_btn.className = 'read-status not-read';
+            read_status_btn.textContent = 'Not-read';
+            read_status_btn.onclick = toggleReadStatus;
 
-            read_status_p2.appendChild(p2_btn);
+            read_status_div.appendChild(read_status_btn);
             read_status.appendChild(read_status_p1);
-            read_status.appendChild(read_status_p2);
+            read_status.appendChild(read_status_div);
             card.appendChild(read_status);
         }
 
