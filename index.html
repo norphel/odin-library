@@ -15,7 +15,46 @@
         <button type="button" class="open-modal">Add a New Book</button>
     </header>
     <main>
-        <div class="books-container"></div>
+        <div class="books-container">
+            <div class="card">
+                <div class="book-details">
+                    <p>Title</p>
+                    <p>The Hobbit</p>
+                </div>
+                <div class="book-details">
+                    <p>Author</p>
+                    <p>J.R.R. Tolkien</p>
+                </div>
+                <div class="book-details">
+                    <p>Number of Pages</p>
+                    <p>874</p>
+                </div>
+                <div class="book-details">
+                    <p>Read Status</p>
+                    <div><button type="button" class="read-status read">Read</button></div>
+                </div>
+                <button type="button" class="remove-book" id="1">Remove</button>
+            </div>
+            <div class="card">
+                <div class="book-details">
+                    <p>Title</p>
+                    <p>The Game of Thrones</p>
+                </div>
+                <div class="book-details">
+                    <p>Author</p>
+                    <p>G.R.R. Martin</p>
+                </div>
+                <div class="book-details">
+                    <p>Number of Pages</p>
+                    <p>1078</p>
+                </div>
+                <div class="book-details">
+                    <p>Read Status</p>
+                    <div><button type="button" class=" read-status not-read">Not-read</button></div>
+                </div>
+                <button type="button" class="remove-book" id="2">Remove</button>
+            </div>
+        </div>
         <form action="./index.html" id="add-book-details">
             <p>Add a New Book <button type="button" class="close-modal">&times;</button></p>
             <label for="title">Title <span>*</span>
