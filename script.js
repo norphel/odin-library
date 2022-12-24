@@ -1,12 +1,20 @@
 const openModal = document.querySelector('.open-modal');
-const addNewBook = document.getElementById('add-book-details');
+const overlay = document.querySelector('.modal-overlay');
+const addNewBook = document.querySelector('.modal');
 const closeModal = document.querySelector('.close-modal');
-openModal.addEventListener('click', () => {
+const bookDetail = document.getElementById('add-book-details');
+
+openModal.addEventListener('click', activateModal);
+function activateModal() {
+    bookDetail.reset();
     addNewBook.style.display = 'block';
-});
-closeModal.addEventListener('click', () => {
+    overlay.style.display = 'block';
+}
+closeModal.addEventListener('click', deactivateModal);
+function deactivateModal () {
     addNewBook.style.display = 'none';
-})
+    overlay.style.display = 'none';
+}
 
 
 let myLibrary = [];
@@ -19,7 +27,6 @@ function Book(title, author, noOfPages, readStatus) {
     this.readStatus = readStatus
 }
 
-const bookDetail = document.getElementById('add-book-details')
 bookDetail.addEventListener('submit', addBookToLibrary);
 
 function addBookToLibrary(e) {
@@ -39,6 +46,7 @@ function addBookToLibrary(e) {
 
     myLibrary.push(book);
     resetBookshelf();
+    deactivateModal();
     displayAllBooks();
 }
 
@@ -75,7 +83,7 @@ function displayAllBooks() {
         let pages_p1 = document.createElement('p');
         pages_p1.textContent = 'Number of Pages';
         let pages_p2 = document.createElement('p');
-        pages_p2.textContent = myLibrary[i].pages;
+        pages_p2.textContent = myLibrary[i].noOfPages;
 
         pages.appendChild(pages_p1);
         pages.appendChild(pages_p2);
@@ -87,7 +95,7 @@ function displayAllBooks() {
         read_status_p1.textContent = 'Read Status';
         let read_status_div = document.createElement('div');
         
-        if (myLibrary[i].read === true) {
+        if (myLibrary[i].readStatus === true) {
             
             let read_status_btn = document.createElement('button');
             read_status_btn.setAttribute('type', 'button');
