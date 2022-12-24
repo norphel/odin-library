@@ -6,4 +6,7 @@ This project involved implementation of following concepts learned in previous l
 * Dot notation and bracket notation to access object properties
 * Prototypal inheritence
 
+TODO
+* Add accessibility and responsiveness features
+
 
