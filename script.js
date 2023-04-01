@@ -1,3 +1,30 @@
+class Book {
+    constructor (title, author, noOfPages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.noOfPages = noOfPages;
+        this.readStatus = readStatus;
+    }
+}
+
+class Library {
+    constructor () {
+        this.shelf = [];
+    }
+
+    addBook(book) {
+        this.shelf.push(book);
+    }
+
+    removeBook(index) {
+        this.shelf.splice(index, 1);
+    }
+
+    
+}
+
+let myLibrary = new Library();
+
 const openModal = document.querySelector('.open-modal');
 const overlay = document.querySelector('.modal-overlay');
 const addNewBook = document.querySelector('.modal');
@@ -16,17 +43,6 @@ function deactivateModal () {
     overlay.style.display = 'none';
 }
 
-
-let myLibrary = [];
-
-// Book Constructor
-function Book(title, author, noOfPages, readStatus) {
-    this.title = title
-    this.author = author
-    this.noOfPages = noOfPages
-    this.readStatus = readStatus
-}
-
 bookDetail.addEventListener('submit', addBookToLibrary);
 
 function addBookToLibrary(e) {
@@ -37,14 +53,14 @@ function addBookToLibrary(e) {
     const readStatus = document.getElementById('readStatus').checked;
     const book = new Book(title, author, Number(noOfPages), readStatus);
 
-    for(let i = 0; i < myLibrary.length; i++) {
-        if(book.title === myLibrary[i].title && book.author === myLibrary[i].author) {
+    for(let i = 0; i < myLibrary.shelf.length; i++) {
+        if(book.title === myLibrary.shelf[i].title && book.author === myLibrary.shelf[i].author) {
             alert('Book already present in your library!');
             return;
         }
     }
 
-    myLibrary.push(book);
+    myLibrary.addBook(book);
     resetBookshelf();
     deactivateModal();
     displayAllBooks();
@@ -52,7 +68,7 @@ function addBookToLibrary(e) {
 
 function displayAllBooks() {
     let booksContainer = document.querySelector('.books-container');
-    for (let i = 0; i < myLibrary.length; i++) {
+    for (let i = 0; i < myLibrary.shelf.length; i++) {
         let card = document.createElement('div');
         card.classList.add("card");
 
@@ -61,7 +77,7 @@ function displayAllBooks() {
         let title_p1 = document.createElement('p');
         title_p1.textContent = 'Title';
         let title_p2 = document.createElement('p');
-        title_p2.textContent = myLibrary[i].title;
+        title_p2.textContent = myLibrary.shelf[i].title;
 
         title.appendChild(title_p1);
         title.appendChild(title_p2);
@@ -72,7 +88,7 @@ function displayAllBooks() {
         let author_p1 = document.createElement('p');
         author_p1.textContent = 'Author';
         let author_p2 = document.createElement('p');
-        author_p2.textContent = myLibrary[i].author;
+        author_p2.textContent = myLibrary.shelf[i].author;
 
         author.appendChild(author_p1);
         author.appendChild(author_p2);
@@ -83,7 +99,7 @@ function displayAllBooks() {
         let pages_p1 = document.createElement('p');
         pages_p1.textContent = 'Number of Pages';
         let pages_p2 = document.createElement('p');
-        pages_p2.textContent = myLibrary[i].noOfPages;
+        pages_p2.textContent = myLibrary.shelf[i].noOfPages;
 
         pages.appendChild(pages_p1);
         pages.appendChild(pages_p2);
@@ -95,7 +111,7 @@ function displayAllBooks() {
         read_status_p1.textContent = 'Read Status';
         let read_status_div = document.createElement('div');
         
-        if (myLibrary[i].readStatus === true) {
+        if (myLibrary.shelf[i].readStatus === true) {
             
             let read_status_btn = document.createElement('button');
             read_status_btn.setAttribute('type', 'button');
@@ -139,7 +155,7 @@ function resetBookshelf() {
 function removeBookFromLibrary(e) {
     let idOfBookToBeRemoved = e.target.id;
     let indexOfBookToBeRemoved = idOfBookToBeRemoved[idOfBookToBeRemoved.length - 1];
-    myLibrary.splice(indexOfBookToBeRemoved, 1);
+    myLibrary.removeBook(indexOfBookToBeRemoved);
     resetBookshelf();
     displayAllBooks();
 }
